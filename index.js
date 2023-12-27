@@ -15,8 +15,11 @@ program
 
 function operate(options) {
     const args = Object.keys(options);
-    if (!args.length) sshStore.select();
-
+    if (!args.length) {
+        sshStore.select();
+        return;
+    }
+    
     const [param] = args;
     if (param === 'list') sshStore.display();
     else sshStore[param](options[param]);
